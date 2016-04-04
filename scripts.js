@@ -48,6 +48,26 @@ var titles = [
   "Prop Master"
 ]
 
+function countDown(){
+
+var i = 6;
+
+$('body').append('<p>');
+$('p').text('Will begin in 7 seconds');
+
+  var interval = setInterval(function(){
+    $('p').text('Will begin in ' + i + ' seconds');
+    i--;
+    console.log(i);
+    if(i === -1) {
+      clearInterval(interval)
+      $('p').empty();
+    };
+  }, 1000);
+
+
+}
+
 function writeName(){
 
 	var i = 0,
@@ -60,14 +80,14 @@ function writeName(){
                    employee = '.employee.' + i;
                    name = '.name.' + i;
                    title = '.title.' + i;
-                   $('<div></div>').appendTo('#screen').addClass('employee '+i);
-                   $('<h4></h4>').appendTo(employee).addClass('title '+i);
-                   $('<h2></h2>').appendTo(employee).addClass('name '+i);
+                   $('<div></div>').appendTo('body').addClass('employee '+i);
+                   $('<div></div>').appendTo(employee).addClass('title '+i);
+                   $('<div></div>').appendTo(employee).addClass('name '+i);
                    $(name).text(names[i]);
                    $(title).text(titles[i]);
                    i++;
                    if(i >= names.length) clearInterval(interval);
-                 }, 4000);
+                 }, 7000);
 
 }
 
@@ -75,8 +95,8 @@ function fadeInText(){
   var i = 0;
   if (i < 150){
   var interval =  setInterval(function(){
-                    $('h2').css('opacity', '+=0.01');
-                    $('h4').css('opacity', '+=0.01');
+                    $('.name').css('opacity', '+=0.03');
+                    $('.title').css('opacity', '+=0.03');
                     i++;
                   },50);
   }
@@ -86,13 +106,14 @@ function fadeInText(){
 function scrollText(){
    var interval = setInterval(function(){
      							   $('.employee').css('bottom', '+=1px');
-                     $('.employee').css('opacity', '-=0.0025');
+                     $('.employee').css('opacity', '-=0.0015');
    								 }, 50);
 }
 
 
 
 $(function(){
+countDown();
 writeName();
 fadeInText();
 scrollText();
