@@ -53,10 +53,10 @@ function countDown(){
 var i = 6;
 
 $('body').append('<p>');
-$('p').text('Will begin in 7 seconds');
+$('p').text('Will begin in 7');
 
   var interval = setInterval(function(){
-    $('p').text('Will begin in ' + i + ' seconds');
+    $('p').text('Will begin in ' + i);
     i--;
     console.log(i);
     if(i === -1) {
